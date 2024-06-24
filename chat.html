@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Чат</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f0f0f0;
+      height: 100vh;
+      margin: 0;
+    }
+    #chat-container {
+      width: 80%;
+      max-width: 600px;
+      height: 70vh;
+      background-color: white;
+      border: 1px solid #ccc;
+      overflow-y: auto;
+      padding: 10px;
+      margin-top: 20px;
+    }
+    .message {
+      padding: 5px 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+    }
+    .user {
+      background-color: #d1e7dd;
+      align-self: flex-end;
+      text-align: right;
+    }
+    .assistant {
+      background-color: #f8d7da;
+      align-self: flex-start;
+      text-align: left;
+    }
+    #input-field {
+      width: calc(100% - 100px);
+      padding: 10px;
+      margin-top: 20px;
+    }
+    #send-button {
+      width: 80px;
+      padding: 10px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="chat-container"></div>
+  <input type="text" id="input-field" placeholder="Введите сообщение...">
+  <button id="send-button">Отправить</button>
+  <script src="chat.js"></script>
+</body>
+</html>
