@@ -6,6 +6,7 @@
   <title>Poetic Display</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&display=swap');
+
     body {
       font-family: 'Averia Serif Libre', cursive;
       background: url('IMG.png') repeat;
@@ -20,6 +21,7 @@
       min-height: 100vh;
       line-height: 1.6;
     }
+
     .container {
       max-width: 600px;
       background: rgba(0, 0, 0, 0.8);
@@ -28,17 +30,20 @@
       text-align: center;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
+
     .poem {
       font-size: 16px;
       margin-bottom: 20px;
       text-align: left;
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     }
+
     .footer-img {
       margin-top: 20px;
       width: 50%;
       height: auto;
     }
+
     .toggle-button {
       background-color: #C90016;
       color: #fff;
@@ -48,9 +53,11 @@
       cursor: pointer;
       margin-bottom: 20px;
     }
+
     .toggle-button:hover {
       background-color: #a30012;
     }
+
     #game {
       width: 100%;
       height: 400px;
@@ -60,6 +67,7 @@
       border: 2px solid #C90016;
       margin-top: 20px;
     }
+
     .star {
       width: 20px;
       height: 20px;
@@ -68,24 +76,65 @@
       border-radius: 50%;
       cursor: pointer;
     }
+
     .player {
       position: absolute;
       width: 40px;
       height: 40px;
       background-color: #00f;
     }
+
     .block {
       position: absolute;
       width: 20px;
       height: 20px;
       background-color: #f00;
     }
+
     .touch-area {
       position: absolute;
       width: 100%;
       height: 100%;
       top: 0;
       left: 0;
+    }
+
+    /* Add some basic styles for the chat interface */
+    #chat-container {
+      width: 100%;
+      height: 80vh;
+      border: 1px solid #ccc;
+      overflow-y: auto;
+      padding: 10px;
+      margin-top: 20px;
+    }
+
+    .message {
+      padding: 5px 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+    }
+
+    .user {
+      background-color: #d1e7dd;
+      align-self: flex-end;
+      text-align: right;
+    }
+
+    .assistant {
+      background-color: #f8d7da;
+      align-self: flex-start;
+      text-align: left;
+    }
+
+    #input-field {
+      width: calc(100% - 100px);
+      padding: 10px;
+    }
+
+    #send-button {
+      width: 80px;
+      padding: 10px;
     }
   </style>
 </head>
@@ -98,8 +147,7 @@
     <button class="toggle-button" onclick="startGame()">Start Game</button>
     <div id="game"></div>
   </div>
-  <img src="IMG2.png" alt="Footer Image" class="footer-img">
-  <script src="poem.js"></script>
-  <script src="game.js"></script>
-</body>
-</html>
+  <div id="chat-container"></div>
+  <input type="text" id="input-field" placeholder="Type a message..." />
+  <button id="send-button">Send</button>
+  <img src="IMG2.png"
