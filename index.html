@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poetic Display</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&family=Cormorant+Garamond:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&display=swap');
 
         body {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Averia Serif Libre', cursive;
             background: url('IMG.png') repeat;
             background-size: 100%;  /* Changed to 100% */
-            color: #fff;
+            color: #800020; /* Scarlet (Bagrovy) color */
             padding: 20px;
             margin: 0;
             display: flex;
@@ -32,31 +32,30 @@
         }
 
         p {
-            font-size: 20px;
-            margin-bottom: 20px;
+            font-size: 16px; /* Smaller font size */
+            margin-bottom: 10px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
         }
 
         .rainbow-text {
-            font-size: 48px;
-            font-weight: bold;
-            font-family: 'Averia Serif Libre', cursive;
-            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            display: none; /* Remove the rainbow text */
         }
 
         .poem {
-            font-size: 18px;
+            font-size: 16px; /* Smaller font size */
             margin-bottom: 20px;
             text-align: left;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
 
+        .idiotic-text {
+            display: none; /* Remove the idiotic text */
+        }
+
         .footer-img {
             margin-top: 20px;
+            width: 50%; /* Resize image to be twice smaller */
+            height: auto;
         }
     </style>
 </head>
@@ -83,8 +82,6 @@
             A beacon of hope, a ray of light,<br>
             To guide me through this eternal night.</p>
         </div>
-        <div class="rainbow-text">ПУСКАЙ ВСЕ ЗНАЮТ!</div>
-        <div class="idiotic-text">сайт ishlapти 😀</div>
     </div>
     <img src="IMG2.png" alt="Footer Image" class="footer-img">
 </body>
