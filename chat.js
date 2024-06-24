@@ -21,10 +21,10 @@ async function sendMessage() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer 661b607cb06c491191b544977df851bf
+        'Authorization': `Bearer 661b607cb06c491191b544977df851bf`
       },
       body: JSON.stringify({
-        model: 'gpt-4',
+        model: 'gpt-4o',
         messages: [
           { role: 'system', content: 'You are an AI assistant who knows everything.' },
           { role: 'user', content: userMessage }
