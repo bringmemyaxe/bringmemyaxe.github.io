@@ -4,39 +4,83 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Poetic Display</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&display=swap');
+    body {
+      font-family: 'Averia Serif Libre', cursive;
+      background: url('IMG.png') repeat;
+      background-size: 100%;
+      color: #C90016;
+      padding: 20px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 600px;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .poem {
+      font-size: 16px;
+      margin-bottom: 20px;
+      text-align: left;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    .footer-img {
+      margin-top: 20px;
+      width: 50%;
+      height: auto;
+    }
+    .toggle-button {
+      background-color: #C90016;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .toggle-button:hover {
+      background-color: #a30012;
+    }
+    #game {
+      width: 100%;
+      height: 400px;
+      background-color: #000;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid #C90016;
+      margin-top: 20px;
+    }
+    .star {
+      width: 20px;
+      height: 20px;
+      background-color: #FFD700;
+      position: absolute;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <select class="language-selector" onchange="changeLanguage(this.value)">
-      <option value="en">English</option>
-      <option value="uz">Oʻzbek</option>
-      <option value="ru">Русский</option>
-    </select>
-    <div class="poem" id="poem">
-      <p>Dreams come true, but beware what you seek,<br>
-      For they may haunt you, make you weak.<br>
-      Afraid to act, afraid to stay still,<br>
-      A paradox, a never-ending uphill.</p>
-      <p>A crowd of problems, a system to fight,<br>
-      Against me, they stand, with all their might.<br>
-      Death, the greatest enemy, I strive to delay,<br>
-      But life's cruel joke, it'll come anyway.</p>
-      <p>In this chaotic storm, I seek a guiding hand,<br>
-      A lighthouse to lead me to a safer land.<br>
-      Questions unspoken, answers unknown,<br>
-      A journey through darkness, I walk alone.</p>
-      <p>Yet, in this vast sea of uncertainty,<br>
-      I long to find a moment of clarity.<br>
-      A beacon of hope, a ray of light,<br>
-      To guide me through this eternal night.</p>
-    </div>
-    <button class="game-button" onclick="startGame()">Start Game</button>
+    <button class="toggle-button" onclick="changeLanguage('uz')">Oʻzbek</button>
+    <button class="toggle-button" onclick="changeLanguage('en')">English</button>
+    <button class="toggle-button" onclick="changeLanguage('ru')">Русский</button>
+    <div class="poem" id="poem"></div>
+    <button class="toggle-button" onclick="startGame()">Start Game</button>
+    <div id="game"></div>
   </div>
   <img src="IMG2.png" alt="Footer Image" class="footer-img">
-
-  <div class="game" id="game"></div>
-
-  <script src="script.js"></script>
+  <script src="poem.js"></script>
+  <script src="game.js"></script>
 </body>
 </html>
