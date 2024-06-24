@@ -66,11 +66,11 @@ function startGame() {
     const star = document.createElement('div');
     star.classList.add('star');
     star.style.left = Math.random() * (game.clientWidth - 20) + 'px';
-    star.style.top = '0';
+    star.style.top = '0px';
     game.appendChild(star);
 
     let fallingInterval = setInterval(() => {
-      let starTop = parseInt(window.getComputedStyle(star).top);
+      let starTop = parseInt(star.style.top);
       if (starTop < game.clientHeight - 20) {
         star.style.top = starTop + 2 + 'px';
       } else {
