@@ -98,44 +98,6 @@
       top: 0;
       left: 0;
     }
-
-    /* Add some basic styles for the chat interface */
-    #chat-container {
-      width: 100%;
-      height: 80vh;
-      border: 1px solid #ccc;
-      overflow-y: auto;
-      padding: 10px;
-      margin-top: 20px;
-    }
-
-    .message {
-      padding: 5px 10px;
-      margin: 5px 0;
-      border-radius: 5px;
-    }
-
-    .user {
-      background-color: #d1e7dd;
-      align-self: flex-end;
-      text-align: right;
-    }
-
-    .assistant {
-      background-color: #f8d7da;
-      align-self: flex-start;
-      text-align: left;
-    }
-
-    #input-field {
-      width: calc(100% - 100px);
-      padding: 10px;
-    }
-
-    #send-button {
-      width: 80px;
-      padding: 10px;
-    }
   </style>
 </head>
 <body>
@@ -146,8 +108,8 @@
     <div class="poem" id="poem"></div>
     <button class="toggle-button" onclick="startGame()">Start Game</button>
     <div id="game"></div>
+    <a href="chat.html">Перейти в чат</a>
   </div>
-  <div id="chat-container"></div>
-  <input type="text" id="input-field" placeholder="Type a message..." />
-  <button id="send-button">Send</button>
-  <img src="IMG2.png"
+  <img src="IMG2.png" alt="Footer Image" class="footer-img">
+</body>
+</html>
