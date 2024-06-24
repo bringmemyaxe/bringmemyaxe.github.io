@@ -19,6 +19,7 @@
       align-items: center;
       min-height: 100vh;
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
     .container {
       max-width: 600px;
@@ -51,11 +52,27 @@
     .toggle-button:hover {
       background-color: #a30012;
     }
+    .language-selector {
+      background-color: #C90016;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+    .language-selector:hover {
+      background-color: #a30012;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <button class="toggle-button" onclick="toggleLanguage()">Oʻzbek</button>
+    <select class="language-selector" onchange="changeLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="uz">Oʻzbek</option>
+      <option value="ru">Русский</option>
+    </select>
     <div class="poem" id="poem">
       <p>Dreams come true, but beware what you seek,<br>
       For they may haunt you, make you weak.<br>
@@ -77,35 +94,12 @@
   </div>
   <img src="IMG2.png" alt="Footer Image" class="footer-img">
 
+  <audio id="background-music" src="background.mp3" loop></audio>
+  <button class="toggle-button" onclick="toggleMusic()">Play Music</button>
+
   <script>
-    let isEnglish = true;
-
-    function toggleLanguage() {
-      const poem = document.getElementById('poem');
-      const button = document.querySelector('.toggle-button');
-
-      if (isEnglish) {
-        poem.innerHTML = `
-          <p>Orzular ro'yobga chiqadi, lekin nimani izlayotganingizdan ehtiyot bo'ling,<br>
-          Chunki ular sizni ta'qib qilishi, sizni zaiflashtirishi mumkin.<br>
-          Harakat qilishdan qo'rqish, joyida qolishdan qo'rqish,<br>
-          Bir paradoks, hech qachon tugamaydigan bir nishab.</p>
-          <p>Muammolar to'dasi, kurashadigan bir tizim,<br>
-          Ular menga qarshi turishadi, butun kuchlari bilan.<br>
-          O'lim, eng katta dushman, men uni kechiktirishga intilaman,<br>
-          Lekin hayotning shafqatsiz hazili, u baribir keladi.</p>
-          <p>Bu tartibsiz bo'ron ichida, men yo'l ko'rsatuvchi qo'l izlayman,<br>
-          Meni xavfsizroq bir yerga olib boradigan mayoq.<br>
-          Aytilmagan savollar, noma'lum javoblar,<br>
-          Zulmat ichida sayohat, men yolg'iz yuraman.</p>
-          <p>Lekin, bu noaniqlik dengizida,<br>
-          Men aniqlik lahzasini topishni orzu qilaman.<br>
-          Umid mayoqi, nurli bir nur,<br>
-          Meni bu abadiy tun ichidan olib o'tadigan.</p>`;
-        button.textContent = "English";
-      } else {
-        poem.innerHTML = `
-          <p>Dreams come true, but beware what you seek,<br>
+    const poems = {
+      en: `<p>Dreams come true, but beware what you seek,<br>
           For they may haunt you, make you weak.<br>
           Afraid to act, afraid to stay still,<br>
           A paradox, a never-ending uphill.</p>
@@ -120,10 +114,56 @@
           <p>Yet, in this vast sea of uncertainty,<br>
           I long to find a moment of clarity.<br>
           A beacon of hope, a ray of light,<br>
-          To guide me through this eternal night.</p>`;
-        button.textContent = "Oʻzbek";
+          To guide me through this eternal night.</p>`,
+      uz: `<p>Orzular ro'yobga chiqadi, lekin nimani izlayotganingizdan ehtiyot bo'ling,<br>
+          Chunki ular sizni ta'qib qilishi, sizni zaiflashtirishi mumkin.<br>
+          Harakat qilishdan qo'rqish, joyida qolishdan qo'rqish,<br>
+          Bir paradoks, hech qachon tugamaydigan bir nishab.</p>
+          <p>Muammolar to'dasi, kurashadigan bir tizim,<br>
+          Ular menga qarshi turishadi, butun kuchlari bilan.<br>
+          O'lim, eng katta dushman, men uni kechiktirishga intilaman,<br>
+          Lekin hayotning shafqatsiz hazili, u baribir keladi.</p>
+          <p>Bu tartibsiz bo'ron ichida, men yo'l ko'rsatuvchi qo'l izlayman,<br>
+          Meni xavfsizroq bir yerga olib boradigan mayoq.<br>
+          Aytilmagan savollar, noma'lum javoblar,<br>
+          Zulmat ichida sayohat, men yolg'iz yuraman.</p>
+          <p>Lekin, bu noaniqlik dengizida,<br>
+          Men aniqlik lahzasini topishni orzu qilaman.<br>
+          Umid mayoqi, nurli bir nur,<br>
+          Meni bu abadiy tun ichidan olib o'tadigan.</p>`,
+      ru: `<p>Мечты сбываются, но остерегайся того, что ищешь,<br>
+          Они могут преследовать тебя, ослаблять.<br>
+          Боишься действовать, боишься оставаться на месте,<br>
+          Парадокс, бесконечный подъем.</p>
+          <p>Толпа проблем, система для борьбы,<br>
+          Против меня они стоят, со всей своей мощью.<br>
+          Смерть, величайший враг, я стремлюсь отсрочить,<br>
+          Но жестокая шутка жизни, она все равно придет.</p>
+          <p>В этом хаотичном шторме я ищу направляющую руку,<br>
+          Маяк, чтобы привести меня в безопасное место.<br>
+          Неозвученные вопросы, неизвестные ответы,<br>
+          Путешествие во тьме, я иду один.</p>
+          <p>Но в этом огромном море неопределенности,<br>
+          Я стремлюсь найти момент ясности.<br>
+          Свет надежды, луч света,<br>
+          Чтобы вести меня через эту вечную ночь.</p>`
+    };
+
+    function changeLanguage(language) {
+      const poem = document.getElementById('poem');
+      poem.innerHTML = poems[language];
+    }
+
+    function toggleMusic() {
+      const music = document.getElementById('background-music');
+      const button = document.querySelector('.toggle-button');
+      if (music.paused) {
+        music.play();
+        button.textContent = 'Pause Music';
+      } else {
+        music.pause();
+        button.textContent = 'Play Music';
       }
-      isEnglish = !isEnglish;
     }
   </script>
 </body>
