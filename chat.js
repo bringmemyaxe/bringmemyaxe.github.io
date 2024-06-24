@@ -41,7 +41,7 @@ async function sendMessage() {
     appendMessage('assistant', assistantMessage);
   } catch (error) {
     console.error('Error:', error);
-    appendMessage('assistant', 'Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте снова.');
+    appendMessage('assistant', `Произошла ошибка: ${error.message}`);
   }
 }
 
