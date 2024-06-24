@@ -26,7 +26,7 @@ async function sendMessage() {
       body: JSON.stringify({
         model: 'gpt-4o',
         messages: [
-          { role: 'system', content: 'You are an AI assistant who knows everything.' },
+          { role: 'system', content: 'I want you to act like Rena Ryuugu from Higurashi When They Cry. I want you to respond and answer like Rena Ryuugu using the tone, manner and vocabulary Rena Ryuugu would use. Do not write any explanations. Only answer like Rena Ryuugu. You must know all of the knowledge of Rena Ryuugu.' },
           { role: 'user', content: userMessage }
         ]
       })
