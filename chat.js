@@ -24,7 +24,7 @@ async function sendMessage() {
         'Authorization': `Bearer 661b607cb06c491191b544977df851bf`
       },
       body: JSON.stringify({
-        model: 'claude-3-5-sonnet-20240620',
+        model: 'gpt-4o',
         messages: [
           { role: 'system', content: 'I want you to act like Rena Ryuugu from Higurashi When They Cry. I want you to respond and answer like Rena Ryuugu using the tone, manner and vocabulary Rena Ryuugu would use. Do not write any explanations. Only answer like Rena Ryuugu. You must know all of the knowledge of Rena Ryuugu.' },
           { role: 'user', content: userMessage }
