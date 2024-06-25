@@ -1,115 +1,92 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Poetic Display</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&display=swap');
-
-    body {
-      font-family: 'Averia Serif Libre', cursive;
-      background: url('IMG.png') repeat;
-      background-size: 100%;
-      color: #C90016;
-      padding: 20px;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 600px;
-      background: rgba(0, 0, 0, 0.8);
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    .poem {
-      font-size: 16px;
-      margin-bottom: 20px;
-      text-align: left;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-    }
-
-    .footer-img {
-      margin-top: 20px;
-      width: 50%;
-      height: auto;
-    }
-
-    .toggle-button {
-      background-color: #C90016;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-bottom: 20px;
-    }
-
-    .toggle-button:hover {
-      background-color: #a30012;
-    }
-
-    #game {
-      width: 100%;
-      height: 400px;
-      background-color: #000;
-      position: relative;
-      overflow: hidden;
-      border: 2px solid #C90016;
-      margin-top: 20px;
-    }
-
-    .star {
-      width: 20px;
-      height: 20px;
-      background-color: #FFD700;
-      position: absolute;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-
-    .player {
-      position: absolute;
-      width: 40px;
-      height: 40px;
-      background-color: #00f;
-    }
-
-    .block {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: #f00;
-    }
-
-    .touch-area {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Minecraft-like Game</title>
+    <style>
+        canvas {
+            display: block;
+            margin: auto;
+            background: #87CEEB;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <button class="toggle-button" onclick="changeLanguage('uz')">Oʻzbek</button>
-    <button class="toggle-button" onclick="changeLanguage('en')">English</button>
-    <button class="toggle-button" onclick="changeLanguage('ru')">Русский</button>
-    <div class="poem" id="poem"></div>
-    <button class="toggle-button" onclick="startGame()">Start Game</button>
-    <div id="game"></div>
-    <a href="chat.html">Перейти в чат</a>
-  </div>
-  <img src="IMG2.png" alt="Footer Image" class="footer-img">
+<canvas id="gameCanvas" width="800" height="600"></canvas>
+<script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const tileSize = 40;
+    const rows = canvas.height / tileSize;
+    const cols = canvas.width / tileSize;
+    const player = { x: 5, y: 5 };
+    const world = [];
+
+    // Initialize world with empty blocks
+    for (let y = 0; y < rows; y++) {
+        const row = [];
+        for (let x = 0; x < cols; x++) {
+            row.push(0);
+        }
+        world.push(row);
+    }
+
+    // Draw the world
+    function drawWorld() {
+        for (let y = 0; y < rows; y++) {
+            for (let x = 0; x < cols; x++) {
+                if (world[y][x] === 1) {
+                    ctx.fillStyle = '#8B4513';
+                } else {
+                    ctx.fillStyle = '#7CFC00';
+                }
+                ctx.fillRect(x * tileSize, y * tileSize, tileSize, tileSize);
+                ctx.strokeRect(x * tileSize, y * tileSize, tileSize, tileSize);
+            }
+        }
+    }
+
+    // Draw the player
+    function drawPlayer() {
+        ctx.fillStyle = '#0000FF';
+        ctx.fillRect(player.x * tileSize, player.y * tileSize, tileSize, tileSize);
+    }
+
+    // Handle keyboard input
+    document.addEventListener('keydown', (event) => {
+        switch (event.key) {
+            case 'ArrowUp':
+                if (player.y > 0) player.y--;
+                break;
+            case 'ArrowDown':
+                if (player.y < rows - 1) player.y++;
+                break;
+            case 'ArrowLeft':
+                if (player.x > 0) player.x--;
+                break;
+            case 'ArrowRight':
+                if (player.x < cols - 1) player.x++;
+                break;
+            case ' ':
+                if (world[player.y][player.x] === 0) {
+                    world[player.y][player.x] = 1;
+                } else {
+                    world[player.y][player.x] = 0;
+                }
+                break;
+        }
+        draw();
+    });
+
+    // Draw everything
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawWorld();
+        drawPlayer();
+    }
+
+    draw();
+</script>
 </body>
 </html>
