@@ -5,22 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Minecraft-like Game</title>
     <style>
-        canvas {
-            display: block;
-            margin: auto;
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            height: 100vh;
             background: #87CEEB;
+        }
+        canvas {
+            background: #87CEEB;
+            border: 1px solid #000;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .button {
+            background: #000;
+            color: #fff;
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-<canvas id="gameCanvas" width="800" height="600"></canvas>
+<canvas id="gameCanvas" width="300" height="300"></canvas>
+<div class="controls">
+    <button class="button" id="up">Up</button>
+    <button class="button" id="left">Left</button>
+    <button class="button" id="place">Place/Break</button>
+    <button class="button" id="right">Right</button>
+    <button class="button" id="down">Down</button>
+</div>
 <script>
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
-    const tileSize = 40;
+    const tileSize = 20;
     const rows = canvas.height / tileSize;
     const cols = canvas.width / tileSize;
-    const player = { x: 5, y: 5 };
+    const player = { x: 7, y: 7 };
     const world = [];
 
     // Initialize world with empty blocks
@@ -53,28 +83,28 @@
         ctx.fillRect(player.x * tileSize, player.y * tileSize, tileSize, tileSize);
     }
 
-    // Handle keyboard input
-    document.addEventListener('keydown', (event) => {
-        switch (event.key) {
-            case 'ArrowUp':
-                if (player.y > 0) player.y--;
-                break;
-            case 'ArrowDown':
-                if (player.y < rows - 1) player.y++;
-                break;
-            case 'ArrowLeft':
-                if (player.x > 0) player.x--;
-                break;
-            case 'ArrowRight':
-                if (player.x < cols - 1) player.x++;
-                break;
-            case ' ':
-                if (world[player.y][player.x] === 0) {
-                    world[player.y][player.x] = 1;
-                } else {
-                    world[player.y][player.x] = 0;
-                }
-                break;
+    // Handle button presses
+    document.getElementById('up').addEventListener('click', () => {
+        if (player.y > 0) player.y--;
+        draw();
+    });
+    document.getElementById('down').addEventListener('click', () => {
+        if (player.y < rows - 1) player.y++;
+        draw();
+    });
+    document.getElementById('left').addEventListener('click', () => {
+        if (player.x > 0) player.x--;
+        draw();
+    });
+    document.getElementById('right').addEventListener('click', () => {
+        if (player.x < cols - 1) player.x++;
+        draw();
+    });
+    document.getElementById('place').addEventListener('click', () => {
+        if (world[player.y][player.x] === 0) {
+            world[player.y][player.x] = 1;
+        } else {
+            world[player.y][player.x] = 0;
         }
         draw();
     });
