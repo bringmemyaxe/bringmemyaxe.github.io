@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poetic Display</title>
+    <title>🎶🎶</title> <!-- Changed title to 🎶🎶 -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&display=swap');
         body {
             font-family: 'Averia Serif Libre', cursive;
-            background: url('IMG.png') repeat;
-            background-size: 100%;
-            background-size: contain; /* Ensures the image scales while preserving aspect ratio */
+            background: url('IMG.png') repeat; /* Tiles the image at its original size */
             color: #C90016;
             padding: 20px;
             margin: 0;
@@ -20,11 +18,6 @@
             align-items: center;
             min-height: 100vh;
             line-height: 1.6;
-        }
-        @media (min-width: 1080px) {
-            body {
-                background-size: 1080px auto; /* Limits the background width to 1080px on larger screens */
-            }
         }
         .container {
             max-width: 600px;
