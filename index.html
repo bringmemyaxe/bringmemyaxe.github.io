@@ -11,7 +11,7 @@
         body {
             font-family: 'Averia Serif Libre', 'PT Serif', serif; /* Use both fonts */
             background: url('IMG.png') repeat;
-            background-size: 100%;
+            background-size: 100% auto;
             color: #C90016;
             padding: 20px;
             margin: 0;
@@ -25,7 +25,7 @@
 
         @media (min-width: 1024px) {
             body {
-                background-size: 1024px auto;
+                background-size: 50% auto;
             }
         }
 
@@ -47,8 +47,21 @@
 
         .footer-img {
             margin-top: 20px;
-            width: 50%;
+            width: 80%; /* Adjust for mobile */
+            max-width: 300px; /* Adjust for desktop */
             height: auto;
+        }
+
+        @media (min-width: 768px) {
+            .footer-img {
+                width: 50%;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-img {
+                width: 30%;
+            }
         }
 
         .toggle-button {
