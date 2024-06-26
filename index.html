@@ -8,8 +8,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&display=swap');
         body {
             font-family: 'Averia Serif Libre', cursive;
-            background: url('IMG.png') repeat; /* Tiles the image at its original size */
-            background-size: auto; /* Ensures the image retains its original size */
+            background: url('IMG.png') repeat;
+            background-size: 100%; /* Default for small screens */
             color: #C90016;
             padding: 20px;
             margin: 0;
@@ -19,6 +19,11 @@
             align-items: center;
             min-height: 100vh;
             line-height: 1.6;
+        }
+        @media (min-width: 1024px) {
+            body {
+                background-size: 1024px auto; /* Limit the background width to 1024px on larger screens */
+            }
         }
         .container {
             max-width: 600px;
