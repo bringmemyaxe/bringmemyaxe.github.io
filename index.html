@@ -119,12 +119,9 @@
     <canvas id="canvas"></canvas>
 
     <script>
-        // Canvas animation
+        // JavaScript to control particle animation based on screen size
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
         const particles = [];
         const particleImage = new Image();
         particleImage.src = 'IMG3.png'; // Path to your image
@@ -175,11 +172,25 @@
             animate();
         };
 
-        window.addEventListener('resize', () => {
+        function handleResize() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            createParticles();
-        });
+
+            if (window.innerWidth <= 1024) {
+                // Enable particles for small screens
+                canvas.style.display = 'block';
+                createParticles();
+                animate();
+            } else {
+                // Disable particles for large screens
+                canvas.style.display = 'none';
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.length = 0;
+            }
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Initial check on load
     </script>
 </body>
 </html>
