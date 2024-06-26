@@ -6,8 +6,10 @@
     <title>🎶🎶</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap'); /* For Cyrillic support */
+
         body {
-            font-family: 'Averia Serif Libre', cursive;
+            font-family: 'Averia Serif Libre', 'PT Serif', serif; /* Use both fonts */
             background: url('IMG.png') repeat;
             background-size: 100%;
             color: #C90016;
@@ -19,14 +21,14 @@
             align-items: center;
             min-height: 100vh;
             line-height: 1.6;
-            overflow: hidden; /* Prevent scrollbars */
-            position: relative; /* Ensure the canvas is positioned correctly */
         }
+
         @media (min-width: 1024px) {
             body {
                 background-size: 1024px auto;
             }
         }
+
         .container {
             max-width: 600px;
             background: rgba(0, 0, 0, 0.8);
@@ -35,17 +37,20 @@
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
+
         .poem {
             font-size: 16px;
             margin-bottom: 20px;
             text-align: left;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
+
         .footer-img {
             margin-top: 20px;
             width: 50%;
             height: auto;
         }
+
         .toggle-button {
             background-color: #C90016;
             color: #fff;
@@ -55,52 +60,9 @@
             cursor: pointer;
             margin-bottom: 20px;
         }
+
         .toggle-button:hover {
             background-color: #a30012;
-        }
-        #game {
-            width: 100%;
-            height: 400px;
-            background-color: #000;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid #C90016;
-            margin-top: 20px;
-        }
-        .star {
-            width: 20px;
-            height: 20px;
-            background-color: #FFD700;
-            position: absolute;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        .player {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            background-color: #00f;
-        }
-        .block {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #f00;
-        }
-        .touch-area {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-        #canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
         }
     </style>
 </head>
@@ -115,82 +77,14 @@
         <a href="chat.html">Перейти в чат</a>
     </div>
     <img src="IMG2.png" alt="Footer Image" class="footer-img">
-    
-    <canvas id="canvas"></canvas>
-
     <script>
-        // JavaScript to control particle animation based on screen size
-        const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
-        const particles = [];
-        const particleImage = new Image();
-        particleImage.src = 'IMG3.png'; // Path to your image
-
-        function createParticles() {
-            for (let i = 0; i < 100; i++) {
-                const size = Math.random() * 20 + 10; // Adjust size (10 to 30)
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: size,
-                    speedX: Math.random() * 1.5 - 0.75, // Adjust speed (-0.75 to 0.75)
-                    speedY: Math.random() * 1.5 - 0.75 // Adjust speed (-0.75 to 0.75)
-                });
-            }
+        function changeLanguage(language) {
+            // Your language changing code here
         }
 
-        function drawParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(particle => {
-                ctx.drawImage(particleImage, particle.x, particle.y, particle.size, particle.size); // Ensure square aspect ratio
-            });
+        function startGame() {
+            // Your game starting code here
         }
-
-        function updateParticles() {
-            particles.forEach(particle => {
-                particle.x += particle.speedX;
-                particle.y += particle.speedY;
-
-                if (particle.x < 0 || particle.x > canvas.width) {
-                    particle.speedX = -particle.speedX;
-                }
-
-                if (particle.y < 0 || particle.y > canvas.height) {
-                    particle.speedY = -particle.speedY;
-                }
-            });
-        }
-
-        function animate() {
-            drawParticles();
-            updateParticles();
-            requestAnimationFrame(animate);
-        }
-
-        particleImage.onload = () => {
-            createParticles();
-            animate();
-        };
-
-        function handleResize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            if (window.innerWidth <= 1024) {
-                // Enable particles for small screens
-                canvas.style.display = 'block';
-                createParticles();
-                animate();
-            } else {
-                // Disable particles for large screens
-                canvas.style.display = 'none';
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.length = 0;
-            }
-        }
-
-        window.addEventListener('resize', handleResize);
-        handleResize(); // Initial check on load
     </script>
 </body>
 </html>
