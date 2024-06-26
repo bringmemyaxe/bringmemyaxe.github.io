@@ -47,8 +47,14 @@
 
         .footer-img {
             margin-top: 20px;
-            width: auto; /* Keep original size */
+            width: 80%; /* Adjust for mobile */
             height: auto;
+        }
+
+        @media (min-width: 768px) {
+            .footer-img {
+                width: auto;
+            }
         }
 
         .toggle-button {
