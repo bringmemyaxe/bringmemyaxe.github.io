@@ -9,7 +9,8 @@
         body {
             font-family: 'Averia Serif Libre', cursive;
             background: url('IMG.png') repeat;
-            background-size: cover; /* Changed from 100% to cover */
+            background-size: 100%;
+            background-size: contain; /* Ensures the image scales while preserving aspect ratio */
             color: #C90016;
             padding: 20px;
             margin: 0;
@@ -19,6 +20,11 @@
             align-items: center;
             min-height: 100vh;
             line-height: 1.6;
+        }
+        @media (min-width: 1080px) {
+            body {
+                background-size: 1080px auto; /* Limits the background width to 1080px on larger screens */
+            }
         }
         .container {
             max-width: 600px;
