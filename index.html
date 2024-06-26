@@ -145,7 +145,10 @@
         function drawParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach(particle => {
-                ctx.drawImage(particleImage, particle.x, particle.y, particle.size, particle.size);
+                // Adjust particle size based on image aspect ratio
+                const aspectRatio = particleImage.width / particleImage.height;
+                const height = particle.size / aspectRatio;
+                ctx.drawImage(particleImage, particle.x, particle.y, particle.size, height);
             });
         }
 
