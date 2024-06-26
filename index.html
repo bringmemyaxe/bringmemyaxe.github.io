@@ -126,6 +126,8 @@
         canvas.height = window.innerHeight;
 
         const particles = [];
+        const particleImage = new Image();
+        particleImage.src = 'IMG3.png'; // Path to your image
 
         function createParticles() {
             for (let i = 0; i < 100; i++) {
@@ -142,11 +144,7 @@
         function drawParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach(particle => {
-                ctx.fillStyle = '#fff';
-                ctx.beginPath();
-                ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-                ctx.closePath();
-                ctx.fill();
+                ctx.drawImage(particleImage, particle.x, particle.y, particle.size, particle.size);
             });
         }
 
@@ -171,8 +169,10 @@
             requestAnimationFrame(animate);
         }
 
-        createParticles();
-        animate();
+        particleImage.onload = () => {
+            createParticles();
+            animate();
+        };
 
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
