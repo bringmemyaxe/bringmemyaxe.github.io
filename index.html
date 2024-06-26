@@ -1,122 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Minecraft-like Game</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-            height: 100vh;
-            background: #87CEEB;
-        }
-        canvas {
-            background: #87CEEB;
-            border: 1px solid #000;
-        }
-        .controls {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
-        .button {
-            background: #000;
-            color: #fff;
-            padding: 10px;
-            margin: 5px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poetic Display</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Averia Serif Libre', cursive;
+      background: url('IMG.png') repeat;
+      background-size: 100%;
+      color: #C90016;
+      padding: 20px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 600px;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .poem {
+      font-size: 16px;
+      margin-bottom: 20px;
+      text-align: left;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .footer-img {
+      margin-top: 20px;
+      width: 50%;
+      height: auto;
+    }
+
+    .toggle-button {
+      background-color: #C90016;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .toggle-button:hover {
+      background-color: #a30012;
+    }
+
+    #game {
+      width: 100%;
+      height: 400px;
+      background-color: #000;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid #C90016;
+      margin-top: 20px;
+    }
+
+    .star {
+      width: 20px;
+      height: 20px;
+      background-color: #FFD700;
+      position: absolute;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .player {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-color: #00f;
+    }
+
+    .block {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #f00;
+    }
+
+    .touch-area {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+  </style>
 </head>
 <body>
-<canvas id="gameCanvas" width="300" height="300"></canvas>
-<div class="controls">
-    <button class="button" id="up">Up</button>
-    <button class="button" id="left">Left</button>
-    <button class="button" id="place">Place/Break</button>
-    <button class="button" id="right">Right</button>
-    <button class="button" id="down">Down</button>
-</div>
-<script>
-    const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
-    const tileSize = 20;
-    const rows = canvas.height / tileSize;
-    const cols = canvas.width / tileSize;
-    const player = { x: 7, y: 7 };
-    const world = [];
-
-    // Initialize world with empty blocks
-    for (let y = 0; y < rows; y++) {
-        const row = [];
-        for (let x = 0; x < cols; x++) {
-            row.push(0);
-        }
-        world.push(row);
-    }
-
-    // Draw the world
-    function drawWorld() {
-        for (let y = 0; y < rows; y++) {
-            for (let x = 0; x < cols; x++) {
-                if (world[y][x] === 1) {
-                    ctx.fillStyle = '#8B4513';
-                } else {
-                    ctx.fillStyle = '#7CFC00';
-                }
-                ctx.fillRect(x * tileSize, y * tileSize, tileSize, tileSize);
-                ctx.strokeRect(x * tileSize, y * tileSize, tileSize, tileSize);
-            }
-        }
-    }
-
-    // Draw the player
-    function drawPlayer() {
-        ctx.fillStyle = '#0000FF';
-        ctx.fillRect(player.x * tileSize, player.y * tileSize, tileSize, tileSize);
-    }
-
-    // Handle button presses
-    document.getElementById('up').addEventListener('click', () => {
-        if (player.y > 0) player.y--;
-        draw();
-    });
-    document.getElementById('down').addEventListener('click', () => {
-        if (player.y < rows - 1) player.y++;
-        draw();
-    });
-    document.getElementById('left').addEventListener('click', () => {
-        if (player.x > 0) player.x--;
-        draw();
-    });
-    document.getElementById('right').addEventListener('click', () => {
-        if (player.x < cols - 1) player.x++;
-        draw();
-    });
-    document.getElementById('place').addEventListener('click', () => {
-        if (world[player.y][player.x] === 0) {
-            world[player.y][player.x] = 1;
-        } else {
-            world[player.y][player.x] = 0;
-        }
-        draw();
-    });
-
-    // Draw everything
-    function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawWorld();
-        drawPlayer();
-    }
-
-    draw();
-</script>
+  <div class="container">
+    <button class="toggle-button" onclick="changeLanguage('uz')">Oʻzbek</button>
+    <button class="toggle-button" onclick="changeLanguage('en')">English</button>
+    <button class="toggle-button" onclick="changeLanguage('ru')">Русский</button>
+    <div class="poem" id="poem"></div>
+    <button class="toggle-button" onclick="startGame()">Start Game</button>
+    <div id="game"></div>
+    <a href="chat.html">Перейти в чат</a>
+  </div>
+  <img src="IMG2.png" alt="Footer Image" class="footer-img">
 </body>
 </html>
