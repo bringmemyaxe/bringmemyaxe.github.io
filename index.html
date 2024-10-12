@@ -51,27 +51,36 @@
         }
 
         .time {
-            font-size: 36px;
+            font-size: 20px; /* Adjusted font size */
             color: #f39c12;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .date {
             color: #bdc3c7;
-            font-size: 24px;
+            font-size: 20px; /* Adjusted font size */
+            margin-bottom: 10px;
         }
 
         .now-playing {
-            margin-top: 20px;
+            margin-top: 10px;
+            font-size: 20px; /* Adjusted font size */
         }
 
         .now-playing h2 {
             color: #f39c12;
-            font-size: 28px;
+            font-size: 20px; /* Adjusted font size */
+            margin: 5px 0; /* Space between title and artist */
+        }
+
+        .now-playing img {
+            width: 40px; /* Small image next to the title */
+            vertical-align: middle;
+            margin-left: 5px; /* Spacing between the image and the title */
         }
 
         .icon {
-            font-size: 36px;
+            font-size: 24px;
             color: #f39c12;
             text-align: center;
             margin-top: 20px;
@@ -89,24 +98,34 @@
         }
 
         .message {
-            font-size: 24px;
+            font-size: 20px; /* Adjusted font size */
             color: #E60026;
             margin: 0 auto;
             max-width: 600px;
+            margin-bottom: 20px; /* Spacing below the message */
         }
 
         .links {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
+            justify-content: space-between; /* Space between links */
+            margin-top: 10px;
+        }
+
+        .link {
+            font-size: 20px; /* Adjusted font size */
+            margin-top: 10px; /* Spacing above the links */
         }
 
         .link a {
-            color: #87CEFA; /* Sky-blue greyish color */
             text-decoration: none;
-            font-size: 24px;
-            margin-bottom: 10px;
+        }
+
+        .link a:first-child {
+            color: #87CEFA; /* Different color for "Use Linux!" */
+        }
+
+        .link a:last-child {
+            color: #FF6347; /* Different color for "r/unixporn" */
         }
 
         .footer {
@@ -119,7 +138,7 @@
 
         @media (max-width: 768px) {
             .dashboard {
-                grid-template-rows: 1fr auto auto;
+                grid-template-rows: auto auto auto;
                 grid-template-columns: 1fr;
             }
 
@@ -135,9 +154,9 @@
             <div class="time">Quarter past twelve</div>
             <div class="date">February 29</div>
             <div class="now-playing">
-                <p>Now Playing:</p>
-                <h2>My Possession</h2>
-                <p>Ministry</p>
+                🎶<span>My Possession</span>
+                <img src="https://a5.mzstatic.com/us/r1000/0/Music/74/d0/de/mzi.gkneluew.jpg" alt="My Possession Cover">
+                <span>Ministry</span>
             </div>
             <div class="icon">🎶</div>
         </div>
@@ -145,12 +164,13 @@
             <div class="message">
                 What the hell are you doing here? Go back where you came from, bugger off, and don't come back until you've got a decent idea. There won't be a translation into your bloody language. You're free to go.
             </div>
+            <img src="IMG2.png" alt="Footer Image" class="footer-img" style="max-width: 80%; height: auto;">
             <div class="links">
                 <div class="link">
-                    <a href="https://www.archlinux.org/download/">Use Linux!</a>
+                    <a href="https://www.reddit.com/r/unixporn/">r/unixporn</a>
                 </div>
                 <div class="link">
-                    <a href="https://www.reddit.com/r/unixporn/">r/unixporn</a>
+                    <a href="https://www.archlinux.org/download/">Use Linux!</a>
                 </div>
             </div>
         </div>
