@@ -72,25 +72,20 @@
         .now-playing {
             margin-top: 10px;
             font-size: 18px; /* Smaller font size */
+            text-align: center; /* Center the content */
         }
 
         .now-playing img {
-            width: 40px; /* Small image next to the title */
-            vertical-align: middle;
-            margin-right: 5px; /* Spacing between the image and the title */
-            position: relative;
-            top: -5px; /* Slightly above the title */
+            width: 40px; /* Small image size */
+            display: block; /* Make it a block element */
+            margin: 0 auto 5px; /* Center image and add spacing below */
         }
 
         .links {
             display: flex;
-            justify-content: space-between; /* Space between links */
+            justify-content: center; /* Center the buttons */
+            gap: 15px; /* Small gap between buttons */
             margin-top: 10px;
-        }
-
-        .link {
-            font-size: 20px; /* Adjusted font size */
-            margin-top: 10px; /* Spacing above the links */
         }
 
         .link a {
@@ -98,14 +93,11 @@
             padding: 8px 12px; /* Padding for button appearance */
             border: 2px solid crimson; /* Fancy border color */
             border-radius: 8px; /* Rounded edges for button */
+            color: #FF6347; /* Color for "r/unixporn" */
         }
 
-        .link a:first-child {
-            color: #FF6347; /* Different color for "r/unixporn" */
-        }
-
-        .link a:last-child {
-            color: #87CEFA; /* Different color for "Use Linux!" */
+        .link a:nth-child(2) {
+            color: #32CD32; /* Different color for "Use Linux!" */
         }
 
         .footer {
@@ -160,11 +152,9 @@
             </div>
         </div>
         <div class="sidebar">
-            <div class="time">quarter past twelve</div>
-            <div class="date">February 29</div>
             <div class="now-playing">
                 <img src="https://a5.mzstatic.com/us/r1000/0/Music/74/d0/de/mzi.gkneluew.jpg" alt="My Possession Cover">
-                🎶My Possession🎶 Ministry
+                🎶My Possession🎶 Ministry🎶
             </div>
         </div>
     </div>
