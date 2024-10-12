@@ -30,7 +30,7 @@
 
         .dashboard {
             display: grid;
-            grid-template-rows: 1fr 2fr 1fr;
+            grid-template-rows: auto auto; /* Adjusted for two rows */
             grid-template-columns: 1fr 3fr;
             width: 100%;
             max-width: 1200px;
@@ -98,7 +98,7 @@
         }
 
         .message {
-            font-size: 22px; /* Larger font size for the message */
+            font-size: 26px; /* Larger font size for the message on PC */
             color: #E60026;
             margin: 0 auto;
             max-width: 600px;
@@ -114,10 +114,17 @@
         .link {
             font-size: 20px; /* Adjusted font size */
             margin-top: 10px; /* Spacing above the links */
+            padding: 5px 10px; /* Padding for the button-like effect */
+            border: 2px solid #E60026; /* Border for button effect */
+            border-radius: 5px; /* Rounded corners */
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5); /* Background for links */
+            transition: background-color 0.3s; /* Smooth transition */
         }
 
         .link a {
             text-decoration: none;
+            color: #FFFFFF; /* Text color */
         }
 
         .link a:first-child {
@@ -126,6 +133,10 @@
 
         .link a:last-child {
             color: #87CEFA; /* Different color for "Use Linux!" */
+        }
+
+        .link:hover {
+            background-color: rgba(0, 0, 0, 0.8); /* Change background on hover */
         }
 
         .footer {
@@ -140,33 +151,31 @@
             max-width: 80%; /* Centered image size */
             height: auto;
             display: block; /* Centering the image */
-            margin: 0 auto; /* Centering the image */
+            margin: 10px auto; /* Centering the image */
         }
 
         @media (max-width: 768px) {
             .dashboard {
-                grid-template-rows: auto auto auto;
+                grid-template-rows: auto auto;
                 grid-template-columns: 1fr;
             }
 
             .main-content, .footer {
                 grid-column: 1 / 2;
             }
+
+            .message {
+                font-size: 18px; /* Smaller font size on mobile */
+            }
+
+            .now-playing {
+                font-size: 14px; /* Smaller font size on mobile */
+            }
         }
     </style>
 </head>
 <body>
     <div class="dashboard">
-        <div class="sidebar">
-            <div class="time">quarter past twelve</div>
-            <div class="date">February 29</div>
-            <div class="now-playing">
-                🎶My Possession🎶
-                <img src="https://a5.mzstatic.com/us/r1000/0/Music/74/d0/de/mzi.gkneluew.jpg" alt="My Possession Cover">
-                🎶Ministry🎶
-            </div>
-            <div class="icon">🎶</div>
-        </div>
         <div class="main-content">
             <div class="message">
                 What the hell are you doing here? Go back where you came from, bugger off, and don't come back until you've got a decent idea. There won't be a translation into your bloody language. You're free to go.
@@ -179,6 +188,15 @@
                 <div class="link">
                     <a href="https://www.archlinux.org/download/">Use Linux!</a>
                 </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="time">quarter past twelve</div>
+            <div class="date">February 29</div>
+            <img src="https://a5.mzstatic.com/us/r1000/0/Music/74/d0/de/mzi.gkneluew.jpg" alt="My Possession Cover" style="margin-bottom: 5px;">
+            <div class="now-playing">
+                🎶My Possession🎶
+                🎶Ministry🎶
             </div>
         </div>
     </div>
