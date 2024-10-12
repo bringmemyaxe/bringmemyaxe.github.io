@@ -29,20 +29,127 @@
             }
         }
 
+        .dashboard {
+            display: grid;
+            grid-template-rows: 1fr 2fr 1fr;
+            grid-template-columns: 1fr 3fr;
+            width: 100%;
+            max-width: 1200px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .sidebar {
+            background: rgba(30, 30, 30, 0.9);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .time h1 {
+            font-size: 48px;
+            color: #f39c12;
+        }
+
+        .time p {
+            color: #bdc3c7;
+        }
+
+        .now-playing {
+            margin-top: 30px;
+        }
+
+        .now-playing h2 {
+            color: #f39c12;
+        }
+
+        .storage {
+            margin-top: 30px;
+            color: #bdc3c7;
+        }
+
+        .menu-icons a {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #f39c12;
+            text-decoration: none;
+        }
+
+        .main-content {
+            background: rgba(40, 40, 40, 0.8);
+            padding: 20px;
+            grid-column: 2 / 3;
+        }
+
+        .widget {
+            background: rgba(50, 50, 50, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .widget h2 {
+            font-size: 36px;
+            color: #E60026;
+        }
+
+        .links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .category ul li {
+            margin: 10px 0;
+        }
+
+        .category ul li a {
+            color: #f39c12;
+            text-decoration: none;
+        }
+
+        .footer {
+            background: rgba(30, 30, 30, 0.9);
+            text-align: center;
+            padding: 20px;
+            grid-column: span 2;
+        }
+
+        .footer h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .actions a {
+            color: #f39c12;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
         .container {
             max-width: 600px;
+            margin-top: 20px;
             background: rgba(0, 0, 0, 0.8);
             border-radius: 10px;
             padding: 20px;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            font-size: 24px; /* Adjust font size as needed */
-            color: #E60026; /* Scarlet velvet red color */
+            font-size: 24px;
+            color: #E60026;
         }
 
         .footer-img {
             margin-top: 20px;
-            width: 80%; /* Adjust for mobile */
+            width: 80%;
             height: auto;
         }
 
@@ -54,6 +161,71 @@
     </style>
 </head>
 <body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <div class="time">
+                <h1>01:36</h1>
+                <p>Monday, December 24</p>
+                <p>358 days around the sun</p>
+                <p>mist 4°C</p>
+            </div>
+            <div class="now-playing">
+                <p>Now Playing:</p>
+                <h2>Sacred Worlds</h2>
+                <p>Blind Guardian</p>
+            </div>
+            <div class="storage">
+                <p>11GB Free</p>
+            </div>
+            <div class="menu-icons">
+                <a href="#">🔍</a>
+                <a href="#">❌</a>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="widget">
+                <h2>Welcome Elena</h2>
+                <div class="links">
+                    <div class="category">
+                        <h3>Daily</h3>
+                        <ul>
+                            <li><a href="#">YouTube</a></li>
+                            <li><a href="#">Inbox</a></li>
+                            <li><a href="#">Github</a></li>
+                            <li><a href="#">Drive</a></li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <h3>Reddit</h3>
+                        <ul>
+                            <li><a href="#">/r/all</a></li>
+                            <li><a href="#">/r/unix</a></li>
+                            <li><a href="#">/r/unixporn</a></li>
+                            <li><a href="#">/r/linuxgaming</a></li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <h3>4chan</h3>
+                        <ul>
+                            <li><a href="#">/g/ - Technology</a></li>
+                            <li><a href="#">/v/ - Video Games</a></li>
+                            <li><a href="#">/wg/ - Wallpapers</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <h2>Goodbye Elena</h2>
+            <div class="actions">
+                <a href="#">Poweroff</a>
+                <a href="#">Reboot</a>
+                <a href="#">Suspend</a>
+                <a href="#">Exit</a>
+                <a href="#">Lock</a>
+            </div>
+        </div>
+    </div>
     <div class="container">
         What the hell are you doing here? Go back where you came from, bugger off, and don't come back until you've got a decent idea. There won't be a translation into your bloody language. You're free to go.
     </div>
