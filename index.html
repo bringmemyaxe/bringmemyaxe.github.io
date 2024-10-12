@@ -30,7 +30,7 @@
 
         .dashboard {
             display: grid;
-            grid-template-rows: auto auto; /* Adjusted for two rows */
+            grid-template-rows: 1fr 2fr 1fr;
             grid-template-columns: 1fr 3fr;
             width: 100%;
             max-width: 1200px;
@@ -50,47 +50,11 @@
             justify-content: center;
         }
 
-        .time {
-            font-size: 18px; /* Smaller font size */
-            color: #f39c12;
-            margin-bottom: 10px;
-        }
-
-        .date {
-            color: #bdc3c7;
-            font-size: 18px; /* Smaller font size */
-            margin-bottom: 10px;
-        }
-
-        .now-playing {
-            margin-top: 10px;
-            font-size: 18px; /* Smaller font size */
-        }
-
-        .now-playing h2 {
-            color: #f39c12;
-            font-size: 18px; /* Smaller font size */
-            margin: 5px 0; /* Space between title and artist */
-        }
-
-        .now-playing img {
-            width: 40px; /* Small image next to the title */
-            vertical-align: middle;
-            margin-left: 5px; /* Spacing between the image and the title */
-        }
-
-        .icon {
-            font-size: 24px;
-            color: #f39c12;
-            text-align: center;
-            margin-top: 20px;
-        }
-
         .main-content {
             background: rgba(40, 40, 40, 0.6);
             backdrop-filter: blur(10px); /* Background blur effect */
             padding: 20px;
-            grid-column: 2 / 3;
+            grid-column: 1 / 3;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -98,11 +62,24 @@
         }
 
         .message {
-            font-size: 26px; /* Larger font size for the message on PC */
+            font-size: 32px; /* Larger font size for the message */
             color: #E60026;
             margin: 0 auto;
             max-width: 600px;
             margin-bottom: 20px; /* Spacing below the message */
+        }
+
+        .now-playing {
+            margin-top: 10px;
+            font-size: 18px; /* Smaller font size */
+        }
+
+        .now-playing img {
+            width: 40px; /* Small image next to the title */
+            vertical-align: middle;
+            margin-right: 5px; /* Spacing between the image and the title */
+            position: relative;
+            top: -5px; /* Slightly above the title */
         }
 
         .links {
@@ -114,17 +91,13 @@
         .link {
             font-size: 20px; /* Adjusted font size */
             margin-top: 10px; /* Spacing above the links */
-            padding: 5px 10px; /* Padding for the button-like effect */
-            border: 2px solid #E60026; /* Border for button effect */
-            border-radius: 5px; /* Rounded corners */
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.5); /* Background for links */
-            transition: background-color 0.3s; /* Smooth transition */
         }
 
         .link a {
             text-decoration: none;
-            color: #FFFFFF; /* Text color */
+            padding: 8px 12px; /* Padding for button appearance */
+            border: 2px solid crimson; /* Fancy border color */
+            border-radius: 8px; /* Rounded edges for button */
         }
 
         .link a:first-child {
@@ -133,10 +106,6 @@
 
         .link a:last-child {
             color: #87CEFA; /* Different color for "Use Linux!" */
-        }
-
-        .link:hover {
-            background-color: rgba(0, 0, 0, 0.8); /* Change background on hover */
         }
 
         .footer {
@@ -151,12 +120,12 @@
             max-width: 80%; /* Centered image size */
             height: auto;
             display: block; /* Centering the image */
-            margin: 10px auto; /* Centering the image */
+            margin: 0 auto; /* Centering the image */
         }
 
         @media (max-width: 768px) {
             .dashboard {
-                grid-template-rows: auto auto;
+                grid-template-rows: auto auto auto;
                 grid-template-columns: 1fr;
             }
 
@@ -164,12 +133,12 @@
                 grid-column: 1 / 2;
             }
 
-            .message {
-                font-size: 18px; /* Smaller font size on mobile */
+            .sidebar {
+                font-size: 14px; /* Smaller font size for mobile view */
             }
 
-            .now-playing {
-                font-size: 14px; /* Smaller font size on mobile */
+            .message {
+                font-size: 20px; /* Smaller font size on mobile */
             }
         }
     </style>
@@ -193,10 +162,9 @@
         <div class="sidebar">
             <div class="time">quarter past twelve</div>
             <div class="date">February 29</div>
-            <img src="https://a5.mzstatic.com/us/r1000/0/Music/74/d0/de/mzi.gkneluew.jpg" alt="My Possession Cover" style="margin-bottom: 5px;">
             <div class="now-playing">
-                🎶My Possession🎶
-                🎶Ministry🎶
+                <img src="https://a5.mzstatic.com/us/r1000/0/Music/74/d0/de/mzi.gkneluew.jpg" alt="My Possession Cover">
+                🎶My Possession🎶 Ministry
             </div>
         </div>
     </div>
