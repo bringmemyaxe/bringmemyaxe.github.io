@@ -51,25 +51,25 @@
         }
 
         .time {
-            font-size: 20px; /* Adjusted font size */
+            font-size: 18px; /* Smaller font size */
             color: #f39c12;
             margin-bottom: 10px;
         }
 
         .date {
             color: #bdc3c7;
-            font-size: 20px; /* Adjusted font size */
+            font-size: 18px; /* Smaller font size */
             margin-bottom: 10px;
         }
 
         .now-playing {
             margin-top: 10px;
-            font-size: 20px; /* Adjusted font size */
+            font-size: 18px; /* Smaller font size */
         }
 
         .now-playing h2 {
             color: #f39c12;
-            font-size: 20px; /* Adjusted font size */
+            font-size: 18px; /* Smaller font size */
             margin: 5px 0; /* Space between title and artist */
         }
 
@@ -98,7 +98,7 @@
         }
 
         .message {
-            font-size: 20px; /* Adjusted font size */
+            font-size: 22px; /* Larger font size for the message */
             color: #E60026;
             margin: 0 auto;
             max-width: 600px;
@@ -121,11 +121,11 @@
         }
 
         .link a:first-child {
-            color: #87CEFA; /* Different color for "Use Linux!" */
+            color: #FF6347; /* Different color for "r/unixporn" */
         }
 
         .link a:last-child {
-            color: #FF6347; /* Different color for "r/unixporn" */
+            color: #87CEFA; /* Different color for "Use Linux!" */
         }
 
         .footer {
@@ -134,6 +134,13 @@
             text-align: center;
             padding: 20px;
             grid-column: span 2;
+        }
+
+        img.footer-img {
+            max-width: 80%; /* Centered image size */
+            height: auto;
+            display: block; /* Centering the image */
+            margin: 0 auto; /* Centering the image */
         }
 
         @media (max-width: 768px) {
@@ -151,12 +158,12 @@
 <body>
     <div class="dashboard">
         <div class="sidebar">
-            <div class="time">Quarter past twelve</div>
+            <div class="time">quarter past twelve</div>
             <div class="date">February 29</div>
             <div class="now-playing">
-                🎶<span>My Possession</span>
+                🎶My Possession🎶
                 <img src="https://a5.mzstatic.com/us/r1000/0/Music/74/d0/de/mzi.gkneluew.jpg" alt="My Possession Cover">
-                <span>Ministry</span>
+                🎶Ministry🎶
             </div>
             <div class="icon">🎶</div>
         </div>
@@ -164,7 +171,7 @@
             <div class="message">
                 What the hell are you doing here? Go back where you came from, bugger off, and don't come back until you've got a decent idea. There won't be a translation into your bloody language. You're free to go.
             </div>
-            <img src="IMG2.png" alt="Footer Image" class="footer-img" style="max-width: 80%; height: auto;">
+            <img src="IMG2.png" alt="Footer Image" class="footer-img">
             <div class="links">
                 <div class="link">
                     <a href="https://www.reddit.com/r/unixporn/">r/unixporn</a>
